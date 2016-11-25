@@ -40,7 +40,7 @@ render () {
     
     return (
       <div className="c-topiclist" onClick={this.changeDate}>
-          wqwqw
+          wqwqw12112
       </div>
     )
   }

@@ -4,7 +4,8 @@
   "description": "redux",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --config webpack.config.js --progress --inline --colors",
+    "watch": "webpack --progress --colors --watch --display-chunks --display-error-details"
   },
   "repository": {
     "type": "git",
@@ -51,9 +52,10 @@
     "swig": "^1.4.2",
     "thunkify": "^2.1.2",
     "vue-resource": "^0.6.1",
+    "webpack-dev-server": "^1.16.2",
     "yargs": "^3.32.0"
   },
-   "devDependencies": {
+  "devDependencies": {
     "autoprefixer": "^6.3.1",
     "autoprefixer-loader": "^3.2.0",
     "babel": "^6.3.26",

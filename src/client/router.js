@@ -2,7 +2,7 @@ import React from 'react'
 import { Route } from 'react-router'
 import App from '../views/App'
 import Login from '../views/User/Login'
-import Register from '../views/User/Login'
+import Content from '../views/Content/Content'
 
 export default function routes(store) {
   const validate = function (nextState, replaceState, callback) {
@@ -18,7 +18,7 @@ export default function routes(store) {
     <Route>
       <Route component={App} onEnter={validate}>
         <Route path='/' component={Login} />
-         <Route path='/aa' component={Register} />
+         <Route path='/aa' component={Content} />
       </Route>
     </Route>
   );

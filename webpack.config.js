@@ -12,6 +12,17 @@ module.exports = {
     resolve : {
         extensions : ['', '.js', '.jsx']
     },
+     //Server Configuration options
+  devServer:{
+    contentBase: 'src',  //Relative directory for base of server
+    hot: true,        //Live-reload
+    inline: true,
+    port: 9000,        //Port Number
+    host: '0.0.0.0',  //Change to '0.0.0.0' for external facing server
+    historyApiFallback: true
+    //proxy /api/* to a node server
+    
+  },
    module : {
     loaders : [
       {
@@ -26,12 +37,7 @@ module.exports = {
       },
       {
         test    : /\.less$/,
-        loaders : [
-          'style-loader',
-          'css-loader',
-          'autoprefixer?browsers=last 2 version',
-          'less-loader?{"sourceMap":true,"modifyVars":{"primary-color": "#ff6f00", "link-color": "#ff6f00"}}' // 调整antd的主题颜色
-        ]
+        loader:  ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
@@ -42,7 +48,7 @@ module.exports = {
       },
       {
         test: /\.css$/, // Only .css files
-        loader: 'style!css' // Run both loaders
+        loader:  ExtractTextPlugin.extract("style-loader", "css-loader")
       },
       /* eslint-disable */
       { test: /\.woff(\?.*)?$/,  loader: "url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff" },
@@ -53,6 +59,14 @@ module.exports = {
       /* eslint-enable */
     ]
   },
+    plugins: [
+    new ExtractTextPlugin("style.css"),
+    new webpack.HotModuleReplacementPlugin()
+    // //Enables Hot Modules Replacement
+    // new webpack.HotModuleReplacementPlugin(),
+    // //Allows error warnings but does not stop compiling. Will remove when eslint is added
+    // new webpack.NoErrorsPlugin(),
+   ],
   
    
 }
