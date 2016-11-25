@@ -99,6 +99,7 @@
     "style-loader": "^0.13.0",
     "supertest": "^1.1.0",
     "url-loader": "^0.5.7",
-    "webpack": "^1.12.11"
+    "webpack": "^1.12.11",
+    "webpack-hot-middleware": "^2.13.2"
   }
 }
