@@ -9,10 +9,11 @@ export default function promiseMiddleware (config = {}) {
     const dispatch = _ref.dispatch
 
     return next => action => {
+     
       if (!isPromise(action.payload)) {
          return next(action)
       }
-
+    
       const { type, payload, meta, params,callback = {} } = action
       const { promise, data } = payload
       const [ PENDING, FULFILLED, REJECTED ] = (meta || {}).promiseTypeSuffixes || promiseTypeSuffixes
@@ -45,6 +46,7 @@ export default function promiseMiddleware (config = {}) {
        */
       action.payload.promise = promise.then(
         (resolved = {}) => {
+          
           const resolveAction = getResolveAction()
           return dispatch(isThunk(resolved) ? resolved.bind(null, resolveAction) : {
             ...resolveAction,

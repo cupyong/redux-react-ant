@@ -27,6 +27,16 @@ export  function R_getAllMenu(state ={}, action) {
   }
 }
 
+export  function R_getAllNew(state ={}, action) {
+  switch (action.type) {
+    case types.GET_ALL_NEW+"_SUCCESS":
+       console.log(action.payload)
+       return action.payload.data
+    default:
+      return state;
+  }
+}
+
 
 
 
